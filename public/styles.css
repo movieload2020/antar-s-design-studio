@@ -780,13 +780,11 @@ button {
     color: var(--primary);
 }
 
-.project-meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.75rem;
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
+/* Hide slideshow buttons on mobile */
+@media (max-width: 639px) {
+    .slideshow-btn {
+        display: none;
+    }
 }
 
 .slideshow-indicators {

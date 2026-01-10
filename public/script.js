@@ -171,6 +171,7 @@ function initSlideshow() {
     renderProjects();
     renderIndicators();
     startAutoSlide();
+    initTouchSwipe();
 
     prevBtn.addEventListener('click', () => {
         if (!isAnimating) prevSlide();
@@ -190,6 +191,39 @@ function initSlideshow() {
             updateSlidePosition();
         }
     });
+}
+
+// ===== Touch Swipe Support =====
+let touchStartX = 0;
+let touchEndX = 0;
+const slideshowContainer = document.getElementById('slideshowContainer');
+
+function initTouchSwipe() {
+    slideshowContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        clearInterval(autoSlideInterval);
+    }, { passive: true });
+
+    slideshowContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoSlide();
+    }, { passive: true });
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0 && !isAnimating) {
+            // Swipe left - next slide
+            nextSlide();
+        } else if (diff < 0 && !isAnimating) {
+            // Swipe right - previous slide
+            prevSlide();
+        }
+    }
 }
 
 function getItemsPerSlide() {
@@ -226,10 +260,6 @@ function renderProjects() {
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">${project.title}</h3>
-                    <div class="project-meta">
-                        <span>❤️ ${project.appreciations}</span>
-                        <span>👁️ ${project.views}</span>
-                    </div>
                 </div>
             </a>
         </div>
