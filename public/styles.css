@@ -1087,38 +1087,37 @@ button {
     color: var(--primary);
 }
 
-/* ===== Thanks for Viewing Section ===== */
-.thanks-section {
-    position: relative;
+/* ===== Follow Section ===== */
+.follow-section {
     padding: 5rem 0;
+    position: relative;
     overflow: hidden;
     background: var(--background);
 }
 
-.thanks-blob {
+.follow-blob {
     position: absolute;
     border-radius: 50%;
     background: var(--primary);
-    opacity: 0.15;
-    filter: blur(60px);
-    animation: blob 15s ease-in-out infinite;
+    opacity: 0.8;
+    filter: blur(0);
 }
 
-.thanks-blob-1 {
-    top: 0;
-    right: -5rem;
-    width: 20rem;
-    height: 20rem;
+.follow-blob-1 {
+    top: 5rem;
+    right: -4rem;
+    width: 12rem;
+    height: 12rem;
 }
 
-.thanks-blob-2 {
-    bottom: 0;
-    left: -5rem;
-    width: 18rem;
-    height: 18rem;
+.follow-blob-2 {
+    bottom: 8rem;
+    left: -4rem;
+    width: 10rem;
+    height: 10rem;
 }
 
-.thanks-content {
+.follow-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1127,78 +1126,84 @@ button {
     z-index: 10;
 }
 
-.thanks-subtitle {
+.follow-title {
     font-family: var(--font-display);
-    font-size: clamp(1.25rem, 4vw, 1.5rem);
-    font-weight: 500;
-    color: var(--muted-foreground);
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 600;
+    color: var(--primary);
     margin-bottom: 2rem;
-    font-style: italic;
+    letter-spacing: 0.05em;
 }
 
-.thanks-profile {
-    margin-bottom: 2rem;
+.follow-profile {
+    margin-bottom: 2.5rem;
 }
 
-.thanks-profile-ring {
-    width: 140px;
-    height: 140px;
+.follow-profile-ring {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    padding: 4px;
+    padding: 6px;
     background: var(--gradient-primary);
     box-shadow: 0 10px 40px -10px hsla(18, 100%, 60%, 0.4);
 }
 
-.thanks-profile-image {
+.follow-profile-image {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
     filter: grayscale(100%);
-    transition: var(--transition-smooth);
 }
 
-.thanks-profile-ring:hover .thanks-profile-image {
-    filter: grayscale(0%);
-}
-
-.thanks-social-buttons {
+.follow-buttons {
     display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.thanks-social-btn {
-    display: flex;
-    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+}
+
+.follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.75rem;
     background: var(--secondary);
-    border-radius: 50%;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.95rem;
     color: var(--foreground);
     transition: var(--transition-smooth);
     box-shadow: var(--shadow-soft);
 }
 
-.thanks-social-btn:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px -5px hsla(18, 100%, 60%, 0.4);
+.follow-btn:hover {
+    background: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
 }
 
-.thanks-tagline {
-    font-size: 1rem;
+.follow-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.follow-btn-telegram {
+    margin-bottom: 2rem;
+}
+
+.follow-tagline {
+    font-size: 1.125rem;
     color: var(--muted-foreground);
-    margin-bottom: 1.5rem;
-    max-width: 18rem;
+    margin-bottom: 2rem;
+    max-width: 20rem;
 }
 
-.thanks-cta-btn {
-    padding: 0.875rem 2rem;
-    font-size: 0.95rem;
-    gap: 0.5rem;
+.btn-get-in-touch {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    gap: 0.75rem;
 }
 
 /* ===== Toast ===== */
