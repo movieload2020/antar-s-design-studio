@@ -327,26 +327,36 @@ function resetAutoSlide() {
 
 // ===== Contact Form =====
 function initContactForm() {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        const submitBtn = contactForm.querySelector('.btn-submit');
-        const originalText = submitBtn.innerHTML;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
         
-        // Show loading state
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Sending...</span>';
-
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        // Show toast
-        showToast();
-
-        // Reset form
-        contactForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
+        const recipientEmail = 'antargfx@gmail.com';
+        const emailSubject = encodeURIComponent(subject);
+        const emailBody = encodeURIComponent(
+            `Hi Antar,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${email}`
+        );
+        
+        // Check if mobile device (Android/iOS)
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Open default mail app (Gmail app on Android)
+            window.location.href = `mailto:${recipientEmail}?subject=${emailSubject}&body=${emailBody}`;
+        } else {
+            // Open Gmail in browser for desktop
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${emailSubject}&body=${emailBody}`;
+            window.open(gmailUrl, '_blank');
+        }
+        
+        // Reset form after short delay
+        setTimeout(() => {
+            contactForm.reset();
+        }, 500);
     });
 }
 
