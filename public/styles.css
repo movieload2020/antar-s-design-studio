@@ -1189,8 +1189,13 @@ button {
     height: 20px;
 }
 
-.follow-btn-telegram {
+.follow-btn-whatsapp {
     margin-bottom: 2rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.follow-btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e, #075e54);
 }
 
 .follow-tagline {
