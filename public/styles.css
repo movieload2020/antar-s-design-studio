@@ -890,6 +890,39 @@ button {
     justify-content: center;
     color: var(--primary-foreground);
     flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.contact-icon::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(8px);
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.15) rotate(8deg);
+    box-shadow: 0 8px 25px -5px hsla(18, 100%, 55%, 0.5);
+}
+
+.contact-item:hover .contact-icon::before {
+    opacity: 0.6;
+    inset: -6px;
+}
+
+.contact-icon svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-item:hover .contact-icon svg {
+    transform: scale(1.1);
 }
 
 .contact-item-label {
